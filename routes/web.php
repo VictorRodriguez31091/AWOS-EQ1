@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('Miprimerlayout', function () {
+    return view('Mi primer layout');
+});
+Route::get('Victor', function () {
+    return view('Layouts.Victor');
+});
