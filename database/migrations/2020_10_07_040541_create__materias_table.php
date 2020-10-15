@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDSM42Table extends Migration
+class CreatemateriasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateDSM42Table extends Migration
      */
     public function up()
     {
-        Schema::create('_d_s_m42', function (Blueprint $table) {
+        Schema::create('materias', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('apellido');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateDSM42Table extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_d_s_m42');
+        Schema::dropIfExists('materias');
     }
 }

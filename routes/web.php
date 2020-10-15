@@ -20,8 +20,13 @@ Route::get('Miprimerlayout', function () {
 Route::get('Victor', function () {
     return view('Layouts.Victor');
 });
-Route::get('helloworld', 'Controller@index')=>name('holamundodos');
+Route::get('helloworld', 'Controller@index')->name('holamundodos');
 //Routes Materias
-Route::resource('/helloworld', '/Materias/controllerMaterias');
+Route::resource('/helloworld', 'Materias\controllerMaterias');
 //Array con JSON
-Route::get('/miprimerarray', '/Materias/controllerMaterias@getAlumnos')=>name('alumnos');
+Route::get('/miprimerarray', 'Materias\controllerMaterias@getAlumnos')->name('alumnos');
+//configurar prefix
+Route::group(['prefix'=>'api'], function(){
+    Route::apiResource('materias', 'Materias\MateriasController');
+    Route::apiResource('alumno', 'controllerAlumno@store');
+});

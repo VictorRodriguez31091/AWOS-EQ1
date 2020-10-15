@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Materias;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+//importar nuestro modelo o modelos a ocupar
+use App\Materias;
 
-class controllerMaterias extends Controller
+class Materiascontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,20 +15,16 @@ class controllerMaterias extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function getAlumnos()
-     {
-        $Alumnos = array (
-            'nombre',
-            'apellido',
-            'email',
-            'edad',
-        );
-        return response()->json($Alumnos);
-     }
+
+
     public function index()
     {
-        //
-        return view('HelloWorld');
+        //Eloquen de laravel
+        //select*from materias:
+        $materias = Materias::all();
+        //retorna el array en formato json
+        return response()->json(['materias'->$materias]);
+
     }
 
     /**
@@ -48,6 +46,8 @@ class controllerMaterias extends Controller
     public function store(Request $request)
     {
         //
+        $materia = Create::all($request);
+        return('el registro materia se guardo con exito');
     }
 
     /**
@@ -56,9 +56,14 @@ class controllerMaterias extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //$materias se le conoce como un enlace implicito por que al listas la ruta por ende nos manda a materias
     public function show($id)
     {
         //
+        //$materia = Materias::find($id)
+
+        return $materia;
+
     }
 
     /**
