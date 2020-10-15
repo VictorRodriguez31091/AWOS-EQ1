@@ -60,7 +60,7 @@ class Materiascontroller extends Controller
     public function show($id)
     {
         //
-        //$materia = Materias::find($id)
+        $materia = Materias::find($id);
 
         return $materia;
 
