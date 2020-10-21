@@ -1,11 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Materias;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 //importar nuestro modelo o modelos a ocupar
 use App\Materias;
+
+//Mandamos llamae al request a traves de un alias
+use App\Http\Requests\MateriasVic as MateriasRequest;
+
 
 class Materiascontroller extends Controller
 {
@@ -15,7 +19,15 @@ class Materiascontroller extends Controller
      * @return \Illuminate\Http\Response
      */
 
+     //Creamos un constructor que sirve para que antes de que se ejecute cualquier
+     //funcion, valide que se cumpla todo lo que esta dentro del constructor
 
+     protected $materias;
+
+     public function __construct (Materias $materia) {
+         $this->materia=$materia;
+
+     }
 
     public function index()
     {
@@ -43,11 +55,12 @@ class Materiascontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MateriaRequest $request)
     {
-        //
-        $materia = Create::all($request);
-        return('el registro materia se guardo con exito');
+        //return $request
+            $materia = $this->materia->Create($request->all());
+            return response()->json($materia);
+        //return response()->json(new MateriaRequests($materia),201);
     }
 
     /**

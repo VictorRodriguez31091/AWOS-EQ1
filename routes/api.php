@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+//aqui es para que se conecten sistemas externos
+route::apiResource('materiasdsm', 'MateriasController');

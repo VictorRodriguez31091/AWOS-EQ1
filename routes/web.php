@@ -27,6 +27,6 @@ Route::resource('/helloworld', 'Materias\controllerMaterias');
 Route::get('/miprimerarray', 'Materias\controllerMaterias@getAlumnos')->name('alumnos');
 //configurar prefix
 Route::group(['prefix'=>'api'], function(){
-    Route::apiResource('materias', 'Materias\MateriasController');
-    Route::apiResource('alumno', 'controllerAlumno@store');
+    Route::apiResource('materias', 'MateriasController');
+   Route::apiResource('alumno', 'controllerAlumno@store');
 });
